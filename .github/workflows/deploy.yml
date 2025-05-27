@@ -13,7 +13,7 @@ jobs:
       - name: JDK 21 설정
         uses: actions/setup-java@v4
         with:
-          java-version: '17'
+          java-version: '21'
           distribution: 'temurin'
 
       - name: Gradle 빌드
@@ -26,5 +26,6 @@ jobs:
           SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
         run: |
           sudo apt-get update && sudo apt-get install -y sshpass
-          sshpass -p "$SERVER_PASSWORD" scp build/libs/*.jar $SERVER_USER@$SERVER_HOST:~/
-          sshpass -p "$SERVER_PASSWORD" ssh $SERVER_USER@$SERVER_HOST "pkill -f 'java -jar' || true; nohup java -jar *.jar &"
+          sshpass -p "$SERVER_PASSWORD" scp -o StrictHostKeyChecking=no build/libs/*.jar $SERVER_USER@$SERVER_HOST:~/
+          sshpass -p "$SERVER_PASSWORD" ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST "pkill -f 'java -jar' || true;
+          nohup java -jar *.jar &"
