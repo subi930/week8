@@ -38,5 +38,6 @@ jobs:
 #          sync: false
 #          request_pty: false
           script: |
+            pkill -f 'java -jar' || true
             nohup java -jar ~/build/libs/week8-0.0.1-SNAPSHOT.jar &
             exit 0
