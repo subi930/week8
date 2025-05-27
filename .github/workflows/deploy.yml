@@ -39,4 +39,4 @@ jobs:
           request_pty: false
           script: |
             pkill -f 'java -jar' || true
-            nohup java -jar ~/week8-0.0.1-SNAPSHOT-plain.jar >/dev/null 2>&1 < /dev/null &
+            nohup java -jar week8-0.0.1-SNAPSHOT-plain.jar &
