@@ -35,7 +35,8 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           port: ${{ secrets.SERVER_PORT }}
-          sync: false
-          request_pty: false
+#          sync: false
+#          request_pty: false
           script: |
             nohup java -jar ~/build/libs/week8-0.0.1-SNAPSHOT.jar &
+            exit 0
