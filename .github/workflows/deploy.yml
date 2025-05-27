@@ -26,7 +26,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "build/libs/*.jar"
-          target: "~/"
+          target: "~/build/libs/"
 
       - name: 원격 서버에서 JAR 실행
         uses: appleboy/ssh-action@v1.0.3
