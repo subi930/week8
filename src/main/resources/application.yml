@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://{server-ip}:3306/spring?useSSL=false&serverTimezone=Asia/Seoul&characterEncoding=UTF-8&allowPublicKeyRetrieval=true
+    username: root
+    password: {db-password}
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+
+springdoc:
+  swagger-ui:
+    path: /docs/swagger
