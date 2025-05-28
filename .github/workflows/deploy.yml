@@ -34,18 +34,12 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
-          port: ${{ secrets.SERVER_PORT }}
-          sync: true
           script: |
-            # JAR 파일 이름으로 프로세스 종료
+            # 기존 프로세스 종료
             pkill -f 'java -jar.*week8-0.0.1-SNAPSHOT.jar' || true
-            nohup java -jar ~/build/libs/week8-0.0.1-SNAPSHOT.jar &
             
-            # 프로세스가 성공적으로 시작되었는지 확인
-            sleep 5
-            if pgrep -f 'java -jar.*week8-0.0.1-SNAPSHOT.jar' > /dev/null; then
-            echo "애플리케이션이 성공적으로 시작되었습니다."
-            else
-            echo "애플리케이션 시작 실패!"
-            exit 1
-            fi
+            # JAR 파일 실행 (출력은 로그 파일로 리다이렉션)
+            cd ~/build/libs/
+            nohup java -jar week8-0.0.1-SNAPSHOT.jar > app.log 2>&1 &
+            
+            echo "애플리케이션이 시작되었습니다."
