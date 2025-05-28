@@ -38,5 +38,4 @@ jobs:
           request_pty: false
           script: |
             nohup java -jar ~/build/libs/week8-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 < /dev/null &
-            
             exit 0
