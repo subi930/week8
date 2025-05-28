@@ -34,9 +34,11 @@ jobs:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           password: ${{ secrets.SERVER_PASSWORD }}
+          sync: false
+          request_pty: false
           script: |
             # pkill -f 'java -jar.*week8-0.0.1-SNAPSHOT.jar' || true
             cd ~/build/libs/
-            nohup java -jar week8-0.0.1-SNAPSHOT.jar &
+            nohup java -jar week8-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 < /dev/null &
             
-            echo "애플리케이션이 시작되었습니다."
+            exit 0
